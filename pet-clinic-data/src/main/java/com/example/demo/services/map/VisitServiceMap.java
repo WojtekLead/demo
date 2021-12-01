@@ -1,0 +1,43 @@
+package com.example.demo.services.map;
+
+import com.example.demo.model.Visit;
+import com.example.demo.services.VisitService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
+import java.util.Set;
+
+@Service
+@Profile({"default","map"})
+public class VisitServiceMap extends AbstractMapService<Visit, Long> implements VisitService {
+
+    @Override
+    public Set<Visit> findAll() {
+        return super.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        super.deleteById(id);
+
+    }
+
+    @Override
+    public void delete(Visit t) {
+        super.delete(t);
+
+    }
+
+    @Override
+    public Visit save(Visit entity) {
+        if (entity.getDate() == null || entity.getPet() == null) {
+            throw new RuntimeException("invalid visit");
+        }
+        return super.save(entity);
+    }
+
+    @Override
+    public Visit findById(Long id) {
+        return super.findById(id);
+    }
+}
